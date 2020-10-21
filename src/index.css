@@ -1,5 +1,7 @@
 body {
   margin: 0;
+  padding-top: 3.5em;
+  background: #f1f1f1;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
@@ -14,16 +16,26 @@ code {
 
 .navbar {
   color: #ffffff;
-  background: rgb(0, 53, 53);
+  background: rgb(0, 29, 29);
 }
-.dropdown-menu a {
-  padding: 20px;
-  text-align: center;
+
+.navbar a {
+  color: #ffffff;
+  margin: 0px 25px;
 }
-.dropdown-menu a:hover {
-  background: rgba(0, 105, 105, 0.089);
-  transition: 0.3s;
+.navbar a:hover {
+  color: rgb(0, 170, 170);
+  text-decoration: none;
 }
-.dropdown-menu.show {
-  padding: 0px;
+.cart {
+  height: 2.6em;
+  min-width: 7em;
+  background: rgb(0, 68, 68);
+  cursor: pointer;
+}
+.cart span {
+  font-size: 120%;
+}
+.brand {
+  font-size: 130%;
 }

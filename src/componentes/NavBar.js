@@ -1,21 +1,29 @@
 import React from 'react';
-import { Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import { Nav, Navbar } from 'react-bootstrap';
+import CartWidget from './CartWidget';
 
 const NavBar = () => {
-    return (<Navbar className="navbar" variant="dark" expand="lg" fixed="top">
-        <Navbar.Brand href="#home" className="text-light" >Tecno Store</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav" className="justify-content-start text-white">
+    return (<Navbar className="navbar d-flex justify-content-between" variant="dark" expand="lg" fixed="top">
+        <div>
+            <a href="#home" className="text-light brand m-0" >Tecno Store</a>
+        </div>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" className="" />
+
+
+        <Navbar.Collapse id="basic-navbar-nav" className=" order-2 order-md-1 justify-content-start text-white">
 
             <Nav className="mr-5">
-                <NavDropdown title="Productos" id="basic-nav-dropdown" className="py-0">
-                    <NavDropdown.Item href="#action/3.1">Notebooks</NavDropdown.Item>
-                    <NavDropdown.Item href="#action/3.2">Smartphones</NavDropdown.Item>
-                    <NavDropdown.Item href="#action/3.3">Videojuegos</NavDropdown.Item>
-                </NavDropdown>
+
+                <a href="#action/3.1">Notebooks</a>
+                <a href="#action/3.2">Smartphones</a>
+                <a href="#action/3.3">Videojuegos</a>
+
             </Nav>
 
         </Navbar.Collapse>
+        <div className="order-1 order-md-2">
+            <CartWidget />
+        </div>
     </Navbar>)
 }
 export default NavBar
