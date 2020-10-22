@@ -13,29 +13,3 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-
-.navbar {
-  color: #ffffff;
-  background: rgb(0, 29, 29);
-}
-
-.navbar a {
-  color: #ffffff;
-  margin: 0px 25px;
-}
-.navbar a:hover {
-  color: rgb(0, 170, 170);
-  text-decoration: none;
-}
-.cart {
-  height: 2.6em;
-  min-width: 7em;
-  background: rgb(0, 68, 68);
-  cursor: pointer;
-}
-.cart span {
-  font-size: 120%;
-}
-.brand {
-  font-size: 130%;
-}

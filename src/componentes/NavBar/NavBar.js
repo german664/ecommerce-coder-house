@@ -1,6 +1,8 @@
 import React from 'react';
 import { Nav, Navbar } from 'react-bootstrap';
-import CartWidget from './CartWidget';
+import CartWidget from '../CartWidget/CartWidget';
+import './Navbar.css';
+
 
 const NavBar = () => {
     return (<Navbar className="navbar d-flex justify-content-between" variant="dark" expand="lg" fixed="top">
