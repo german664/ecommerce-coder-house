@@ -4,7 +4,7 @@ import ItemCount from '../ItemCount/ItemCount';
 const ItemListContainer = ({ title }) => {
     const [stock, setStock] = useState(15)
     const [cartCount, setCartCount] = useState(0)
-    const onAdd = (value) => {
+    const handleAdd = (value) => {
         setStock(stock - value)
         setCartCount(cartCount + value)
     }
@@ -14,7 +14,7 @@ const ItemListContainer = ({ title }) => {
         <p className="text-center">Stock: {stock}</p>
         <p className="text-center">Carrito: {cartCount}</p>
         <div className="d-flex justify-content-center">
-            <ItemCount stock={stock} initialValue={1} onAdd={onAdd} />
+            <ItemCount stock={stock} initialValue={1} onAdd={handleAdd} />
         </div>
     </>
 }
