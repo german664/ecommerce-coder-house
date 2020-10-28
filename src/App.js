@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="App">
       <NavBar />
-      <Home greeting="Bienvenido a Tecno Store" />
+      <Home greeting="Tecno Store" />
     </div>
   );
 }

@@ -1,31 +1,33 @@
 import React from 'react';
-import { Nav, Navbar } from 'react-bootstrap';
+import { Container, Nav, Navbar } from 'react-bootstrap';
 import CartWidget from '../CartWidget/CartWidget';
 import './Navbar.css';
 
 
 const NavBar = () => {
-    return (<Navbar className="navbar d-flex justify-content-between" variant="dark" expand="lg" fixed="top">
-        <div>
-            <a href="#home" className="text-light brand m-0" >Tecno Store</a>
-        </div>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" className="" />
+    return (<Navbar bg="primary" variant="dark" expand="lg" fixed="top">
+        <Container>
+            <div>
+                <a href="#home" className="text-light brand m-0" >Tecno Store</a>
+            </div>
+            <Navbar.Toggle aria-controls="basic-navbar-nav" className="" />
 
 
-        <Navbar.Collapse id="basic-navbar-nav" className=" order-2 order-md-1 justify-content-start text-white">
+            <Navbar.Collapse id="basic-navbar-nav" className=" order-2 order-md-1 justify-content-start text-white">
 
-            <Nav className="mr-5">
+                <Nav className=" ml-4">
 
-                <a href="#action/3.1">Notebooks</a>
-                <a href="#action/3.2">Smartphones</a>
-                <a href="#action/3.3">Videojuegos</a>
+                    <a href="#action/3.1">Notebooks</a>
+                    <a href="#action/3.2">Smartphones</a>
+                    <a href="#action/3.3">Videojuegos</a>
 
-            </Nav>
+                </Nav>
 
-        </Navbar.Collapse>
-        <div className="order-1 order-md-2">
-            <CartWidget />
-        </div>
+            </Navbar.Collapse>
+            <div className="order-1 order-md-2">
+                <CartWidget />
+            </div>
+        </Container>
     </Navbar>)
 }
 export default NavBar
