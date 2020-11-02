@@ -30,18 +30,19 @@ const ItemCount = ({ stock, initialValue, onAdd }) => {
 
 
     return <div style={styleCounter} className="">
-        <div className=" p-0 w-100 d-flex justify-content-end">
+        <div className=" p-0 w-100 d-flex justify-content-center">
 
             <span className=" buttons d-flex justify-content-center align-items-center rounded-left" onClick={handleSubstract} style={styleButtons}>-</span>
 
-            <span type="number" className="w-25 bg-white text-center border-top border-bottom pt-1" >{stock > initialValue ? value : stock}</span>
-            <span className="buttons  rounded-right d-flex justify-content-center align-items-center" onClick={handleSum} style={styleButtons}>+</span>
+            <span type="number" className="px-3 bg-white text-center border-top border-bottom pt-1" >{stock > initialValue ? value : stock}</span>
+
+            <span className="buttons rounded-right d-flex justify-content-center align-items-center" onClick={handleSum} style={styleButtons}>+</span>
 
             <div className="add d-flex justify-content-center ml-2">
 
                 <span className="btn btn-success p-1" onClick={() => {
                     if (stock > 0) {
-                        onAdd(value)
+                        onAdd(value, stock)
                         setValue(initialValue)
                     }
 
