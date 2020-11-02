@@ -1,11 +1,11 @@
 import React from 'react'
 
-const Item = ({ product }) => {
+const Item = ({ product, onClick }) => {
     return (
         <div className="card p-3 rounded h-100 shadow-sm">
             <div className="card-body d-flex flex-column p-0">
                 <div >
-                    <a href={`#/product/${product.name}`}><img src={product.pictureUrl} className="card-img-top" /></a>
+                    <a href={`#/product/${product.name}`}><img src={product.pictureUrl} className="card-img-top" onClick={() => onClick(product.id)} /></a>
                 </div>
                 <div className="">
                     <h5 className="my-3">{product.title}</h5>
