@@ -2,12 +2,12 @@ import React from 'react'
 import { Col, Row } from 'react-bootstrap'
 import Item from './Item/Item'
 
-const ItemList = ({ products, onClick }) => {
+const ItemList = ({ products }) => {
     return (
 
         products.map(product => {
-            return <div className="col mt-4 mt-md-0" key={product.id} >
-                <Item product={product} onClick={onClick} />
+            return <div className="col mb-5" key={product.id} >
+                <Item product={product} />
             </div>
         })
 

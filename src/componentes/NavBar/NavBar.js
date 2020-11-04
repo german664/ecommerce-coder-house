@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container, Nav, Navbar } from 'react-bootstrap';
+import { Link, NavLink } from 'react-router-dom';
 import CartWidget from '../CartWidget/CartWidget';
 import './Navbar.css';
 
@@ -8,7 +9,7 @@ const NavBar = () => {
     return (<Navbar bg="primary" variant="dark" expand="lg" fixed="top">
         <Container>
             <div>
-                <a href="#home" className="text-light brand m-0" >Tecno Store</a>
+                <Link to="/" className="text-light brand m-0" >Tecno Store</Link>
             </div>
             <Navbar.Toggle aria-controls="basic-navbar-nav" className="" />
 
@@ -17,9 +18,9 @@ const NavBar = () => {
 
                 <Nav className=" ml-4">
 
-                    <a href="#action/3.1">Notebooks</a>
-                    <a href="#action/3.2">Smartphones</a>
-                    <a href="#action/3.3">Videojuegos</a>
+                    <NavLink activeClassName="text-success" to="/category/notebooks">Notebooks</NavLink>
+                    <NavLink activeClassName="text-success" to="/category/smartphones">Smartphones</NavLink>
+                    <NavLink activeClassName="text-success" to="/category/videojuegos">Videojuegos</NavLink>
 
                 </Nav>
 

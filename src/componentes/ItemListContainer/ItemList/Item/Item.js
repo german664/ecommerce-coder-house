@@ -1,16 +1,17 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
-const Item = ({ product, onClick }) => {
+const Item = ({ product }) => {
     return (
-        <div className="card p-3 rounded h-100 shadow-sm">
+        <div className="card rounded h-100  shadow-sm p-0">
             <div className="card-body d-flex flex-column p-0">
                 <div >
-                    <a href={`#/product/${product.name}`}><img src={product.pictureUrl} className="card-img-top" onClick={() => onClick(product.id)} /></a>
+                    <Link to={`/item/${product.id}`}><img src={product.pictureUrl} className="card-img-top" /></Link>
                 </div>
-                <div className="">
+                <div className="px-3">
                     <h5 className="my-3">{product.title}</h5>
                 </div>
-                <div className="mt-auto">
+                <div className="mt-auto px-3 mb-2">
                     <p className="mb-0 mt-auto text-right text-primary" style={{ "fontSize": "1.5em" }}><strong>${product.price}</strong></p>
                 </div>
             </div>
