@@ -1,14 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { Col, Container, Image, Row } from 'react-bootstrap';
-import { useParams } from 'react-router-dom';
-import ItemCount from '../ItemCount/ItemCount';
-import ItemDetail from '../ItemDetailContainer/ItemDetail/ItemDetail';
-import ItemDetailContainer from '../ItemDetailContainer/ItemDetailContainer';
+import { Container } from 'react-bootstrap';
 import ItemList from './ItemList/ItemList';
 
 const ItemListContainer = ({ title }) => {
     const [productList, setProductList] = useState([])
-    const [cartCount, setCartCount] = useState(0)
 
     const fetchPromise = new Promise((resolve, reject) => {
         setTimeout(() => {
@@ -19,7 +14,7 @@ const ItemListContainer = ({ title }) => {
 
                 { id: 2, price: 150000, title: "Echo Dot (3ra Gen) - Parlante inteligente con Alexa", pictureUrl: "/images-promiseTest/alexa.jpg", stock: 8, description: "Echo Dot es un parlante inteligente controlado por voz con Alexa. Pide música noticias información y mucho más. También puedes llamar a casi cualquier persona y controlar con tu voz los dispositivos Smart Home compatibles." },
 
-                { id: 3, price: 200000, title: "Cámara fotográfica EOS Rebel T7 con juego de doble acercamiento", pictureUrl: "/images-promiseTest/camera.jpg", stock: 15, description: "Kit fotográfico Canon compuesto por la cámara EOS Rebel T7 con lente 18-55mm + Lente EF75-300mm para conseguir la versatilidad y el enfoque adecuado en cada espacio. Modelo ideal para poner en práctica tu talento en la captura y grabación de tus proyectos y grandes momentos. Esta versión destaca por su Sensor CMOS APS-C (22.3 x 14.9 mm) de 24.1 Megapíxeles su opción para filmar en formato Vídeo Full HD (1080p) y la capacidad de tomar hasta 3 fotos por segundo en modo ráfaga" },
+                { id: 3, price: 200000, title: "Cámara fotográfica EOS Rebel T7 con juego de doble acercamiento", pictureUrl: "/images-promiseTest/camera.jpg", stock: 15, description: "Modelo ideal para poner en práctica tu talento en la captura y grabación de tus proyectos y grandes momentos. Esta versión destaca por su Sensor CMOS APS-C (22.3 x 14.9 mm) de 24.1 Megapíxeles su opción para filmar en formato Vídeo Full HD (1080p) y la capacidad de tomar hasta 3 fotos por segundo en modo ráfaga" },
 
                 { id: 4, price: 90000, title: "Apple - iPhone 11 ", pictureUrl: "/images-promiseTest/phone.jpg", stock: 18, description: "Este producto seminuevo no está certificado por Apple, pero ha sido inspeccionado, probado y limpiado profesionalmente por proveedores calificados de Amazon." },
 

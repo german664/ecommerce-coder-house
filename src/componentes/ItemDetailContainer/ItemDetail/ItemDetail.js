@@ -1,6 +1,5 @@
 import React from 'react'
 import { Col, Image, Row } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
 import ItemCount from '../../ItemCount/ItemCount'
 
 const ItemDetail = ({ item, initialValue, onAdd }) => {
@@ -19,7 +18,7 @@ const ItemDetail = ({ item, initialValue, onAdd }) => {
                     <Col md={5} className="">
                         <Image src={item.pictureUrl} alt={item.title} fluid className="rounded" />
                     </Col>
-                    <Col md={5} className="">
+                    <Col md={6} className="">
                         <div className="card border-0 h-100">
                             <div className="card-body d-flex flex-column py-0 pl-0">
                                 <div className="mt-3 mt-md-0">
