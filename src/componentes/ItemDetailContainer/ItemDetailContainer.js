@@ -17,15 +17,6 @@ const ItemDetailContainer = () => {
         { id: 4, price: 90000, title: "Apple - iPhone 11 ", pictureUrl: "/images-promiseTest/phone.jpg", stock: 18, description: "Este producto seminuevo no está certificado por Apple, pero ha sido inspeccionado, probado y limpiado profesionalmente por proveedores calificados de Amazon." }
     ]
 
-    const handleAdd = (value, stock) => {
-        setItemDetail(prevState => {
-            return {
-                ...prevState,
-                stock: (stock - value)
-            }
-        })
-
-    }
 
     const { id } = useParams()
     const [itemDetail, setItemDetail] = useState()
@@ -48,7 +39,7 @@ const ItemDetailContainer = () => {
                     <Link to="/"><span className="btn btn-secondary my-4">Atrás</span></Link>
                 </Col>
             </Row>
-            <ItemDetail item={itemDetail} initialValue={1} onAdd={handleAdd} />
+            <ItemDetail item={itemDetail} setItemDetail={setItemDetail} />
         </Container>
     )
 }

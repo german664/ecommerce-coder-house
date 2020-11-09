@@ -1,12 +1,29 @@
-import React from 'react'
-import { Col, Image, Row } from 'react-bootstrap'
+import React, { useState } from 'react'
+import { Button, Col, Image, Row } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 import ItemCount from '../../ItemCount/ItemCount'
+import './itemDetail.css'
 
-const ItemDetail = ({ item, initialValue, onAdd }) => {
+const ItemDetail = ({ item, setItemDetail }) => {
     const priceStyle = {
         "color": "#E74C3C",
         "font-size": "2.5rem"
     }
+
+    const [qty, setQty] = useState(0)
+
+    const onAdd = (quantityToAdd, stock) => {
+        setQty(quantityToAdd)
+        setItemDetail(prevState => {
+            return {
+                ...prevState,
+                stock: (stock - quantityToAdd)
+            }
+        })
+
+    }
+
+
     const gastoCLP = (numero) => {
         return new Intl.NumberFormat().format(numero)
     }
@@ -31,7 +48,15 @@ const ItemDetail = ({ item, initialValue, onAdd }) => {
                                     <p>{item.description}</p>
                                 </div>
                                 <div className="d-flex justify-content-center mt-auto">
-                                    <ItemCount stock={item.stock} initialValue={initialValue} onAdd={onAdd} />
+                                    <ItemCount stock={item.stock} initialValue={1} onAdd={onAdd} />
+                                </div>
+                                {qty > 0 &&
+                                    <div className="d-flex justify-content-center mt-2">
+                                        <button className="btn btn-primary" ><Link to="/cart" className="text-white" >Terminar Compra</Link></button>
+                                    </div>
+                                }
+                                <div>
+                                    Stock: {item.stock}
                                 </div>
                             </div>
                         </div>

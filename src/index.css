@@ -30,3 +30,8 @@ code {
     transform: rotate(360deg);
   }
 }
+
+a:hover {
+  color: red;
+  text-decoration: none;
+}
