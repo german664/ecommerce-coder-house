@@ -12,7 +12,7 @@ const CartWidget = () => {
     }
     const { cart } = useCartContext()
     return (
-        <div className="cart rounded-lg d-flex align-items-center bg-success" style={icon}>
+        <div className={cart.length === 0 ? "d-none " : "" + "cart rounded-lg d-flex align-items-center bg-success"} style={icon}>
             <div className="w-25 p-3 border-right h-100 d-flex align-items-center justify-content-center">
                 <i class="fas fa-shopping-cart"></i>
             </div>

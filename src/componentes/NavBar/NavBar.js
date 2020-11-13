@@ -25,7 +25,7 @@ const NavBar = () => {
                 </Nav>
 
             </Navbar.Collapse>
-            <div className="order-1 order-md-2">
+            <div className={"order-1 order-md-2"}>
                 <Link to="/cart" className="m-0 cart">
                     <CartWidget />
                 </Link>

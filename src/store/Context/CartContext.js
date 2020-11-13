@@ -10,31 +10,31 @@ const CartContext = ({ defaultValue = [], children }) => {
 
     const [cart, setCart] = useState(cartLocalStorage && cartLocalStorage.length > 0 ? cartLocalStorage : defaultValue)
 
+    const methods = {
+        addItem(item, qty) {
+            const productExist = cart.some(cartItem => cartItem.id === item.id)
 
+            if (productExist) {
+                setCart(cart.map(cartItem => {
+                    if (cartItem.id === item.id) {
+                        return { ...cartItem, qty: cartItem.qty + qty }
 
-    const addItem = (item, qty) => {
-        const productExist = cart.some(cartItem => cartItem.id === item.id)
+                    } else {
+                        return cartItem
+                    }
+                }))
+            } else {
+                setCart([...cart, { ...item, qty: qty }])
+            }
+        },
 
-        if (productExist) {
-            setCart(cart.map(cartItem => {
-                if (cartItem.id === item.id) {
-                    return { ...cartItem, qty: cartItem.qty + qty }
+        removeItem(itemId) {
+            setCart(cart.filter(cartItem => cartItem.id !== itemId))
+        },
 
-                } else {
-                    return cartItem
-                }
-            }))
-        } else {
-            setCart([...cart, { ...item, qty: qty }])
-        }
-    }
-
-    const removeItem = (itemId) => {
-        setCart(cart.filter(cartItem => cartItem.id !== itemId))
-    }
-
-    const clearCart = () => {
-        setCart(defaultValue)
+        clearCart() {
+            setCart(defaultValue)
+        },
     }
 
     useEffect(() => {
@@ -42,7 +42,7 @@ const CartContext = ({ defaultValue = [], children }) => {
     }, [cart])
 
     return (
-        <Context.Provider value={{ cart, addItem, removeItem, clearCart }}>
+        <Context.Provider value={{ cart, ...methods }}>
             {children}
         </Context.Provider>
     )

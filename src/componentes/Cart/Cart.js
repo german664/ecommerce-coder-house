@@ -1,10 +1,11 @@
 import React from 'react'
-import { Col, Row, Image, ListGroup, Container, Button } from 'react-bootstrap'
+import { Col, Row, ListGroup, Container, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { useCartContext } from '../../store/Context/CartContext'
+import CartItem from './CartItem'
 
 const Cart = () => {
-    const { cart, removeItem, clearCart } = useCartContext()
+    const { cart, clearCart } = useCartContext()
     cart.totalItems = cart.reduce((acc, item) => acc + (item.qty * item.price), 0)
     const gastoCLP = (numero) => {
         return new Intl.NumberFormat().format(numero)
@@ -18,23 +19,10 @@ const Cart = () => {
                     <ListGroup >
                         {cart.length > 0 &&
                             <>
-                                {cart.map(cartItem => {
-                                    return (
-                                        <ListGroup.Item className="py-md-2 pl-md-2 pr-md-3 ">
-                                            <Row className="d-flex align-items-center justify-content-center text-center">
-                                                <Col lg={2}><Image src={cartItem.pictureUrl} fluid rounded /></Col>
-                                                <Col lg={5} ><Link to={`/item/${cartItem.id}`} className="text-body">{cartItem.title}</Link></Col>
-                                                <Col lg={2} > Cantidad: <br /> {cartItem.qty}</Col>
-                                                <Col lg={2} className="text-center">Total: <br /> $ {cartItem.qty * cartItem.price}</Col>
-                                                <Col lg={1}> <span className="btn border border-danger text-danger">
-                                                    <i className="fas fa-trash" onClick={() => {
-                                                        removeItem(cartItem.id)
-                                                    }} />
-                                                </span>  </Col>
-                                            </Row>
-                                        </ListGroup.Item>
-                                    )
-                                })}
+                                {cart.map(cartItem => <CartItem {...cartItem}>
+                                </CartItem>
+
+                                )}
                                 < div className="d-flex justify-content-center mt-3">
                                     <button button className="btn btn-danger" onClick={clearCart}>Vaciar carro de compras</button>
                                 </div>
