@@ -35,7 +35,18 @@ const CartContext = ({ defaultValue = [], children }) => {
         clearCart() {
             setCart(defaultValue)
         },
+        changeQty(id, qty) {
+            setCart(cart.map(cartItem => {
+                if (cartItem.id === id) {
+                    return { ...cartItem, qty: qty }
+                } else {
+                    return cartItem
+                }
+            }))
+        }
+
     }
+
 
     useEffect(() => {
         localStorage.setItem('cart', JSON.stringify(cart))

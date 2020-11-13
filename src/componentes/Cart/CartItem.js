@@ -3,9 +3,20 @@ import { Col, Row, Image, ListGroup } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { useCartContext } from '../../store/Context/CartContext'
 
-const CartItem = ({ pictureUrl, id, title, qty, price }) => {
+const CartItem = ({ pictureUrl, id, title, qty, price, stock }) => {
 
-    const { removeItem } = useCartContext()
+    const { removeItem, changeQty } = useCartContext()
+
+    const changeQtyHandler = (e) => {
+        changeQty(id, Number(e.target.value))
+    }
+
+    const styleButtons = {
+        "cursor": "pointer",
+        "background": "#d0d0d0",
+        "border": "none",
+        "minWidth": "1.7em",
+    }
 
     return (
         <ListGroup.Item className="py-md-2 pl-md-2 pr-md-3 ">
@@ -16,7 +27,22 @@ const CartItem = ({ pictureUrl, id, title, qty, price }) => {
                 <Col lg={5} ><Link to={`/item/${id}`} className="text-secondary">{title}</Link>
                 </Col>
 
-                <Col lg={2} > Cantidad: <br /> {qty}
+                <Col lg={2} className="d-flex  flex-column align-items-center"> Cantidad: <br />
+                    <div className="d-flex mt-1">
+                        <span className=" buttons d-flex justify-content-center align-items-center rounded-left" style={styleButtons} onClick={(e) => {
+                            if (qty > 1) {
+                                changeQty(id, qty - 1)
+                            }
+                        }} >-</span>
+
+                        <span type="number" className="px-3 bg-white text-center border-top border-bottom pt-0" >{qty}</span>
+
+                        <span className="buttons rounded-right d-flex justify-content-center align-items-center" style={styleButtons} onClick={() => {
+                            if (qty < stock) {
+                                changeQty(id, qty + 1)
+                            }
+                        }}>+</span>
+                    </div>
                 </Col>
 
                 <Col lg={2} className="text-center">Total: <br /> $ {qty * price}
