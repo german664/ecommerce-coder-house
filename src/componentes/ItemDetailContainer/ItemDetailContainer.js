@@ -23,7 +23,7 @@ const ItemDetailContainer = () => {
 
     const getItemDetail = (id) => {
         const item = new Promise((resolve, reject) => {
-            setTimeout(() => { resolve(items.find(item => item.id === parseInt(id))) }, 2000)
+            setTimeout(() => { resolve(items.find(item => item.id === parseInt(id))) }, 1000)
         })
         return item
     }

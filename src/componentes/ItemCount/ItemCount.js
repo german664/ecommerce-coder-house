@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const ItemCount = ({ stock, initialValue, onAdd }) => {
+const ItemCount = ({ stock, initialValue, onAdd, item }) => {
     const styleCounter = {
         "width": "100%",
         "height": "3em",
@@ -28,7 +28,6 @@ const ItemCount = ({ stock, initialValue, onAdd }) => {
     }
 
 
-
     return <div style={styleCounter} className="">
         <div className=" p-0 w-100 d-flex justify-content-center">
 
@@ -42,7 +41,7 @@ const ItemCount = ({ stock, initialValue, onAdd }) => {
 
                 <span className="btn btn-success p-1" onClick={() => {
                     if (stock > 0) {
-                        onAdd(value, stock)
+                        onAdd(item, value, stock)
                         setValue(initialValue)
                     }
 

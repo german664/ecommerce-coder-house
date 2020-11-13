@@ -26,16 +26,16 @@ const ItemListContainer = ({ title }) => {
 
                 { id: 8, price: 90000, title: "Apple - iPhone 11 ", pictureUrl: "/images-promiseTest/phone.jpg", stock: 18, description: "Este producto seminuevo no está certificado por Apple, pero ha sido inspeccionado, probado y limpiado profesionalmente por proveedores calificados de Amazon." }
             ])
-        }, 2000)
+        }, 1000)
     })
 
 
     useEffect(() => {
         fetchPromise.then(result => setProductList(result))
     }, [])
+
     return <>
         <h3 className="text-center my-4">{title}</h3>
-
         <Container>
             <div className="row row-cols-1 row-cols-md-4 justify-content-center mt-2">
                 {productList.length > 0 ?

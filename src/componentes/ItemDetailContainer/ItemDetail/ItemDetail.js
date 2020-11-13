@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { Button, Col, Image, Row } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import { useCartContext } from '../../../store/Context/CartContext'
 import ItemCount from '../../ItemCount/ItemCount'
 import './itemDetail.css'
 
@@ -11,8 +12,9 @@ const ItemDetail = ({ item, setItemDetail }) => {
     }
 
     const [qty, setQty] = useState(0)
+    const { addItem } = useCartContext()
 
-    const onAdd = (quantityToAdd, stock) => {
+    const onAdd = (item, quantityToAdd, stock) => {
         setQty(quantityToAdd)
         setItemDetail(prevState => {
             return {
@@ -20,7 +22,7 @@ const ItemDetail = ({ item, setItemDetail }) => {
                 stock: (stock - quantityToAdd)
             }
         })
-
+        addItem(item, quantityToAdd)
     }
 
 
@@ -48,7 +50,7 @@ const ItemDetail = ({ item, setItemDetail }) => {
                                     <p>{item.description}</p>
                                 </div>
                                 <div className="d-flex justify-content-center mt-auto">
-                                    <ItemCount stock={item.stock} initialValue={1} onAdd={onAdd} />
+                                    <ItemCount stock={item.stock} initialValue={1} onAdd={onAdd} item={item} />
                                 </div>
                                 {qty > 0 &&
                                     <div className="d-flex justify-content-center mt-2">
