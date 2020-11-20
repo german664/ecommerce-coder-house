@@ -10,15 +10,16 @@ const Cart = () => {
     const gastoCLP = (numero) => {
         return new Intl.NumberFormat().format(numero)
     }
-    return (
-        <Container>
-            <h2 className="text-center my-4">Tu carro de compras</h2>
-            <Row>
 
-                <Col md={9}>
-                    <ListGroup >
+    return (
+        <Container className="mt-5">
+            <Row>
+                <Col md={8}>
+                    <ListGroup variant={cart.length > 0 && "flush"}>
+
                         {cart.length > 0 &&
                             <>
+                                <h3 className="">RESUMEN DE LA COMPRA</h3>
                                 {cart.map(cartItem => <CartItem {...cartItem}>
                                 </CartItem>
 
@@ -46,16 +47,14 @@ const Cart = () => {
                     </ListGroup>
                 </Col>
 
-                <Col md={3}>
-                    <ListGroup variant="flush">
-                        <ListGroup.Item className="p-0">
-                            <h5 className="text-secondary">Total</h5>
-                        </ListGroup.Item>
-                        <ListGroup.Item>
+                <Col md={4} className="mt-3 mt-md-0">
+                    <ListGroup >
+                        <ListGroup.Item className="">
+                            <h4 className="text-secondary">TOTAL: ({cart.reduce((acc, item) => acc + item.qty, 0)}) PRODUCTOS</h4>
                             <h3> $ {gastoCLP(cart.totalItems)}</h3>
                         </ListGroup.Item>
-                        <ListGroup.Item className="p-0 mt-3">
-                            <Button type="button" className="btn-block py-3" disabled={cart.length === 0}>Comprar</Button>
+                        <ListGroup.Item>
+                            <Button className="btn-block py-3" disabled={cart.length === 0}>Comprar</Button>
                         </ListGroup.Item>
 
                     </ListGroup>

@@ -1,6 +1,6 @@
 .navbar {
   color: #ffffff;
-  background: rgb(0, 29, 29);
+  background: rgb(19, 19, 19);
 }
 
 .navbar a {
@@ -8,7 +8,7 @@
   margin: 0px 25px;
 }
 .navbar a:hover {
-  color: rgb(0, 170, 170);
+  color: rgb(1, 133, 133);
   text-decoration: none;
 }
 .brand {
