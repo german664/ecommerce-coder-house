@@ -22,7 +22,7 @@ const CartWidget = () => {
 
             </div>
             <div className="w-75 p-2 d-flex justify-content-center">
-                <span style={bigFont} > ${new Intl.NumberFormat().format(cart.reduce((acc, item) => acc + item.price * item.qty, 0))}</span>
+                <span style={bigFont} > ${new Intl.NumberFormat().format(cart.totalPrice)}</span>
             </div>
         </div>
 

@@ -1,8 +1,9 @@
 import React, { useState, useContext } from 'react'
-import { Button, Col, Image, Row } from 'react-bootstrap'
+import { Col, Image, Row } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { useCartContext } from '../../../store/Context/CartContext'
 import ItemCount from '../../ItemCount/ItemCount'
+import Rating from '../../Rating/Rating'
 import './itemDetail.css'
 
 const ItemDetail = ({ item, setItemDetail }) => {
@@ -48,13 +49,15 @@ const ItemDetail = ({ item, setItemDetail }) => {
                                     <h4 className="text-danger" style={priceStyle}>{"$" + formatNumber(item.price)}</h4>
                                     {item.stock < 10 && <h6 className="ml-4 border border-danger  p-1 shadow-sm rounded-lg">{item.stock} en stock</h6>}
                                 </div>
-
+                                <div>
+                                    <Rating value={item.rating} reviews={item.reviews} />
+                                </div>
                                 <div className="text-justify mt-2">
                                     <p>{item.description}</p>
                                 </div>
 
-                                <div className="d-flex justify-content-center mt-auto">
-                                    <ItemCount stock={item.stock} initialValue={1} onAdd={onAdd} item={item} />
+                                <div className="d-flex mt-auto">
+                                    {item.stock > 0 && <ItemCount stock={item.stock} initialValue={1} onAdd={onAdd} item={item} />}
                                 </div>
                                 {qty > 0 &&
                                     <div className="d-flex justify-content-center mt-2">

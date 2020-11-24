@@ -6,6 +6,8 @@ import ItemDetailContainer from './componentes/ItemDetailContainer/ItemDetailCon
 import Cart from './componentes/Cart/Cart';
 import CartContext from './store/Context/CartContext';
 import CategoryItemList from './componentes/ItemListContainer/CategoryItemList';
+import OrderDetail from './componentes/Orders/OrderDetail';
+import SearchListContainer from './componentes/ItemListContainer/SearchListContainer';
 
 function App() {
   return (
@@ -14,10 +16,14 @@ function App() {
         <NavBar />
         <Switch>
 
-          <Route path="/" component={Home} exact />
           <Route path="/item/:id" component={ItemDetailContainer} />
           <Route path="/cart" component={Cart} />
           <Route path="/category/:category" component={CategoryItemList} />
+          <Route path="/order/:orderId" component={OrderDetail} />
+          <Route path="/search/:search" component={SearchListContainer} />
+          <Route path="/" component={Home} exact />
+
+
 
         </Switch>
       </BrowserRouter>

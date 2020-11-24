@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useHistory, useParams } from 'react-router-dom'
 import ItemDetail from './ItemDetail/ItemDetail'
 import { useCartContext } from '../../store/Context/CartContext'
 import ErrorMessage from '../Message/ErrorMessage'
 
 const ItemDetailContainer = () => {
-
+    const history = useHistory()
     const { itemCollection } = useCartContext()
     const { id } = useParams()
     const [itemDetail, setItemDetail] = useState()
@@ -53,7 +53,7 @@ const ItemDetailContainer = () => {
                 <Container>
                     <Row className="justify-content-center">
                         <Col md={11}>
-                            <Link to="/"><span className="btn btn-secondary my-4">Atrás</span></Link>
+                            <span className="btn btn-secondary my-4" onClick={() => history.goBack()}>Atrás</span>
                         </Col>
                     </Row>
                     <ItemDetail item={itemDetail} setItemDetail={setItemDetail} />

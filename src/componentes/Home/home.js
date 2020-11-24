@@ -5,7 +5,7 @@ const Home = ({ greeting }) => {
 
     return (
         <>
-            <ItemListContainer title="Productos" />
+            <ItemListContainer title="Catálogo" />
         </>
     )
 }

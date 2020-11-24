@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { useCartContext } from '../../../../store/Context/CartContext'
+import Rating from '../../../Rating/Rating'
 
 const Item = ({ product }) => {
     const formatNumber = (number) => {
@@ -16,10 +17,13 @@ const Item = ({ product }) => {
                     }
 
                     <Link to={`/item/${product.id}`} >
-                        <img src={product.pictureUrl} className="card-img-top pt-1" /></Link>
+                        <img src={product.pictureUrl} className="card-img-top" /></Link>
                 </div>
                 <div className="px-3">
-                    <Link to={`/item/${product.id}`}> <h5 className="my-3 text-body">{product.title}</h5></Link>
+                    <Link to={`/item/${product.id}`}> <h5 className="my-2 text-body">{product.title}</h5></Link>
+                </div>
+                <div className="px-3">
+                    <Rating value={product.rating} reviews={product.reviews} />
                 </div>
                 <div className="mt-auto px-3 mb-2">
                     <p className="mb-0 mt-auto text-right text-primary" style={{ "fontSize": "1.5em" }}><strong>${formatNumber(product.price)}</strong></p>

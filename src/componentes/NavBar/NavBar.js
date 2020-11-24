@@ -1,15 +1,27 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Nav, Navbar } from 'react-bootstrap';
-import { Link, NavLink } from 'react-router-dom';
+import { Container, Nav, Navbar, Button, Form } from 'react-bootstrap';
+import { Link, NavLink, useHistory } from 'react-router-dom';
 import { getFirestore } from '../../Firebase';
 import CartWidget from './CartWidget/CartWidget';
 import './Navbar.css';
 
 
 const NavBar = () => {
+    const history = useHistory()
     const db = getFirestore()
     const categoriesCollection = db.collection('categories')
     const [categories, setCategories] = useState([])
+    const [search, setSearch] = useState("")
+    const searchHandler = (e) => {
+        e.preventDefault()
+        if (search !== "") {
+            setSearch("")
+            history.push(`/search/${search.trim()}`)
+        }
+    }
+    const inputHandler = (e) => {
+        setSearch(e.target.value)
+    }
 
     useEffect(() => {
         categoriesCollection.get().then((querySnapshot) => {
@@ -37,6 +49,12 @@ const NavBar = () => {
                     {categories.map(category => {
                         return (<NavLink activeClassName="text-success" to={`/category/${category.key}`} >{category.nombre}</NavLink>)
                     })}
+                </Nav>
+                <Nav className="ml-5">
+                    <Form className="d-flex" onSubmit={searchHandler} inline>
+                        <Form.Control type="text" placeholder="Busca un producto" value={search} className="mr-2" onChange={inputHandler}></Form.Control>
+                        <Button type="submit" variant="outline-success" >Buscar</Button>
+                    </Form>
                 </Nav>
 
 
