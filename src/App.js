@@ -15,16 +15,12 @@ function App() {
       <BrowserRouter>
         <NavBar />
         <Switch>
-
           <Route path="/item/:id" component={ItemDetailContainer} />
-          <Route path="/cart" component={Cart} />
           <Route path="/category/:category" component={CategoryItemList} />
           <Route path="/order/:orderId" component={OrderDetail} />
           <Route path="/search/:search" component={SearchListContainer} />
+          <Route path="/cart" component={Cart} />
           <Route path="/" component={Home} exact />
-
-
-
         </Switch>
       </BrowserRouter>
     </CartContext>

@@ -21,7 +21,7 @@ const Cart = () => {
                                 </CartItem>
 
                                 )}
-                                < div className="d-flex justify-content-center mt-3">
+                                < div className="d-flex justify-content-center my-3">
                                     <button button className="btn btn-danger" onClick={clearCart}>Vaciar carro de compras</button>
                                 </div>
                             </>

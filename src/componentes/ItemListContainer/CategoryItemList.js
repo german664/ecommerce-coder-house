@@ -34,6 +34,7 @@ const CategoryItemList = () => {
 
     }, [category])
 
+
     return <>
         {loading ? <div className="d-flex justify-content-center mt-5"> <span class="loader mt-5"></span></div> :
             errorMessage !== "" ? <div className="d-flex justify-content-center mt-5"><ErrorMessage>{errorMessage}</ErrorMessage> </div>

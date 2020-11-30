@@ -4,24 +4,14 @@ import { Link, NavLink, useHistory } from 'react-router-dom';
 import { getFirestore } from '../../Firebase';
 import CartWidget from './CartWidget/CartWidget';
 import './Navbar.css';
+import SearchBar from './SearchBar';
 
 
 const NavBar = () => {
-    const history = useHistory()
+
     const db = getFirestore()
     const categoriesCollection = db.collection('categories')
     const [categories, setCategories] = useState([])
-    const [search, setSearch] = useState("")
-    const searchHandler = (e) => {
-        e.preventDefault()
-        if (search !== "") {
-            setSearch("")
-            history.push(`/search/${search.trim()}`)
-        }
-    }
-    const inputHandler = (e) => {
-        setSearch(e.target.value)
-    }
 
     useEffect(() => {
         categoriesCollection.get().then((querySnapshot) => {
@@ -33,7 +23,7 @@ const NavBar = () => {
         })
     }, [])
 
-    return (<Navbar bg="primary" variant="dark" expand="lg" fixed="top">
+    return (<Navbar className="p-3" variant="dark" expand="lg" fixed="top">
         <Container>
             <div>
                 <Link to="/" className="text-light brand m-0" >Tecno Store</Link>
@@ -51,10 +41,7 @@ const NavBar = () => {
                     })}
                 </Nav>
                 <Nav className="ml-5">
-                    <Form className="d-flex" onSubmit={searchHandler} inline>
-                        <Form.Control type="text" placeholder="Busca un producto" value={search} className="mr-2" onChange={inputHandler}></Form.Control>
-                        <Button type="submit" variant="outline-success" >Buscar</Button>
-                    </Form>
+                    <SearchBar />
                 </Nav>
 
 

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Button, Col, Container, Form, Row } from 'react-bootstrap'
-import { Link, useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 
 const OrderSearch = () => {
     const history = useHistory()
@@ -31,7 +31,7 @@ const OrderSearch = () => {
                                 <Form onSubmit={handleSubmit}>
                                     <h4 className="text-center">Busca tu orden</h4>
                                     <input placeholder="Ingresa tu código de orden" className="form-control" onChange={handleInput}></input>
-                                    <Button type="submit" style={{ "background": "#1A1A1A" }} className="w-100">Buscar</Button>
+                                    <Button type="submit" style={{ "background": "#18222c", "border": "1.5px inset #18BC9C", "color": "#18BC9C" }} className="w-100">Buscar</Button>
                                 </Form>
                             </div>
                         </Col>

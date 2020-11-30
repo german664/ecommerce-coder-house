@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Carousel } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-import { getFirestore } from '../../Firebase'
+import { getFirestore } from '../../../Firebase'
 
 const Banner = () => {
     const db = getFirestore()
@@ -18,7 +18,7 @@ const Banner = () => {
         })
     }, [])
     return (
-        <Carousel>
+        <Carousel pause="hover">
             {images.map(image => (
                 <Carousel.Item>
                     <Link to={image.linkTo}>

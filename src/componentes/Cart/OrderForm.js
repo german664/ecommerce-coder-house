@@ -102,7 +102,7 @@ const OrderForm = ({ cart }) => {
                     <h4 className="text-center"> Total: $ {formatNumber(cart.totalPrice)}</h4>
                 </ListGroup.Item>
                 <ListGroup.Item>
-                    <Button type="submit" className="btn-block py-3" disabled={cart.length === 0}>Comprar</Button>
+                    <Button type="submit" style={{ "background": "#18222c" }} className="btn-block py-3" disabled={cart.length === 0}>Comprar</Button>
                 </ListGroup.Item>
             </Form>
         </ListGroup>

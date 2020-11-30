@@ -13,9 +13,11 @@ const ItemDetailContainer = () => {
     const [error, setError] = useState(false)
     const itemCollectionDetail = itemCollection.doc(id)
     const [errorMessage, setErrorMessage] = useState("")
-    const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState(false)
 
     useEffect(() => {
+        window.scrollTo(0, 0)
+        setLoading(true)
         itemCollectionDetail.get().then((doc) => {
             if (!doc.exists) {
                 console.log('No hay datos')
@@ -30,7 +32,7 @@ const ItemDetailContainer = () => {
             setLoading(false)
         })
 
-    }, [])
+    }, [id])
 
 
 
@@ -49,15 +51,16 @@ const ItemDetailContainer = () => {
                 </div>
 
                 :
-
-                <Container>
-                    <Row className="justify-content-center">
-                        <Col md={11}>
-                            <span className="btn btn-secondary my-4" onClick={() => history.goBack()}>Atrás</span>
-                        </Col>
-                    </Row>
-                    <ItemDetail item={itemDetail} setItemDetail={setItemDetail} />
-                </Container>
+                <>
+                    <Container>
+                        <Row className="justify-content-center">
+                            <Col md={11}>
+                                <span className="btn btn-secondary my-4" onClick={() => history.goBack()}>Atrás</span>
+                            </Col>
+                        </Row>
+                        <ItemDetail item={itemDetail} setItemDetail={setItemDetail} />
+                    </Container>
+                </>
 
 
     )

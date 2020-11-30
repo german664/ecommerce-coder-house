@@ -3,7 +3,6 @@ import { Container } from 'react-bootstrap';
 import ItemList from './ItemList/ItemList';
 import { useCartContext } from '../../store/Context/CartContext';
 import OrderSearch from './OrderSearch';
-import Banner from './Banner';
 
 
 const ItemListContainer = ({ title }) => {
@@ -27,7 +26,6 @@ const ItemListContainer = ({ title }) => {
 
     return <>
 
-        <Banner />
 
         <Container>
 

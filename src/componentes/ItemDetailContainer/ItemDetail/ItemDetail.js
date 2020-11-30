@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react'
-import { Col, Image, Row } from 'react-bootstrap'
+import { Button, Col, Image, Row } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { useCartContext } from '../../../store/Context/CartContext'
 import ItemCount from '../../ItemCount/ItemCount'
@@ -61,7 +61,7 @@ const ItemDetail = ({ item, setItemDetail }) => {
                                 </div>
                                 {qty > 0 &&
                                     <div className="d-flex justify-content-center mt-2">
-                                        <button className="btn btn-primary" ><Link to="/cart" className="text-white">Terminar Compra</Link></button>
+                                        <Link to="/cart" className="text-body"> <Button variant="outline-secondary" >Terminar Compra</Button></Link>
                                     </div>
                                 }
 
