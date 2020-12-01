@@ -1,5 +1,4 @@
 import React, { useState, useContext, useEffect } from 'react'
-import { getFirestore } from '../../Firebase/index'
 
 export const Context = React.createContext()
 export const useCartContext = () => useContext(Context)
@@ -12,10 +11,6 @@ const CartContext = ({ defaultValue = [], children }) => {
     const [cart, setCart] = useState(cartLocalStorage && cartLocalStorage.length > 0 ? cartLocalStorage : defaultValue)
 
     cart.totalPrice = cart.length > 0 ? cart.reduce((acc, item) => acc + (item.qty * item.price), 0) : 0
-
-
-    const db = getFirestore()
-    const itemCollection = db.collection('items')
 
     const methods = {
         addItem(item, qty) {
@@ -50,13 +45,6 @@ const CartContext = ({ defaultValue = [], children }) => {
                     return cartItem
                 }
             }))
-        },
-        calculateDiscount(price, discount) {
-            if (discount === 0) {
-                return Intl.NumberFormat().format(price)
-            } else {
-                return Intl.NumberFormat().format(parseInt(price - (price * discount / 100)))
-            }
         }
 
     }
@@ -65,7 +53,7 @@ const CartContext = ({ defaultValue = [], children }) => {
     }, [cart])
 
     return (
-        <Context.Provider value={{ cart, itemCollection, ...methods }}>
+        <Context.Provider value={{ cart, ...methods }}>
             {children}
         </Context.Provider>
     )

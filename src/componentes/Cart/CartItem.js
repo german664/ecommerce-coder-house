@@ -3,7 +3,7 @@ import { Col, Row, Image, ListGroup } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { useCartContext } from '../../store/Context/CartContext'
 
-const CartItem = ({ pictureUrl, id, title, qty, price, stock, discount }) => {
+const CartItem = ({ pictureUrl, id, title, qty, price, stock }) => {
 
     const { removeItem, changeQty } = useCartContext()
 

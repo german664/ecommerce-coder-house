@@ -14,31 +14,31 @@ const Cart = () => {
                 <Col md={8}>
                     <ListGroup variant={cart.length > 0 && "flush"}>
 
-                        {cart.length > 0 &&
-                            <>
-                                <h3 className="">RESUMEN DE LA COMPRA</h3>
-                                {cart.map(cartItem => <CartItem {...cartItem}>
-                                </CartItem>
-
-                                )}
-                                < div className="d-flex justify-content-center my-3">
-                                    <button button className="btn btn-danger" onClick={clearCart}>Vaciar carro de compras</button>
-                                </div>
-                            </>
-                        }
-
                         {
-                            cart.length === 0 &&
+                            cart.length === 0 ?
 
-                            <ListGroup.Item className="p-4 text-center">
+                                <ListGroup.Item className="p-4 text-center">
 
-                                <i className="fas fa-shopping-cart fa-5x" style={{ "color": "#E8E9EB" }}></i>
+                                    <i className="fas fa-shopping-cart fa-5x" style={{ "color": "#E8E9EB" }}></i>
 
-                                <h6 className="my-4">El carro está vacío. ¡Sigue explorando nuestra tienda para encontrar un producto ideal para ti!</h6>
+                                    <h6 className="my-4">El carro está vacío. ¡Sigue explorando nuestra tienda para encontrar un producto ideal para ti!</h6>
 
-                                <Link to="/" className="text-white">  <Button type="button" variant="danger">¡Sigue comprando!</Button> </Link>
+                                    <Link to="/" className="text-white">  <Button type="button" variant="danger">¡Sigue comprando!</Button> </Link>
 
-                            </ListGroup.Item>
+                                </ListGroup.Item>
+
+                                :
+
+                                <>
+                                    <h3>RESUMEN DE LA COMPRA</h3>
+                                    {cart.map((cartItem, index) => <CartItem {...cartItem} key={index}>
+                                    </CartItem>
+
+                                    )}
+                                    < div className="d-flex justify-content-center my-3">
+                                        <button button className="btn btn-danger" onClick={clearCart}>Vaciar carro de compras</button>
+                                    </div>
+                                </>
                         }
 
                     </ListGroup>

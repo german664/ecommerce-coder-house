@@ -6,7 +6,7 @@ import CartWidget from './CartWidget/CartWidget';
 import SearchBar from './SearchBar/SearchBar';
 
 
-const NavBar = () => {
+const NavigationBar = () => {
 
     const [categories, setCategories] = useState([])
 
@@ -27,7 +27,7 @@ const NavBar = () => {
             <div>
                 <Link to="/" className="text-light brand m-0 mr-md-5" style={{ "fontSize": "1.5em" }}>Tecno Store</Link>
             </div>
-            <Navbar.Toggle aria-controls="basic-navbar-nav" className="" />
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
 
 
             <Navbar.Collapse id="basic-navbar-nav" className=" order-2 order-md-1 justify-content-start text-white">
@@ -56,4 +56,4 @@ const NavBar = () => {
         </Container>
     </Navbar >)
 }
-export default NavBar
+export default NavigationBar

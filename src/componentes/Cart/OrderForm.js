@@ -15,9 +15,10 @@ const OrderForm = ({ cart }) => {
         name: "",
         phone: "",
         email: "",
-        emailCheck: "",
         address: ""
     })
+    const [emailCheck, setEmailCheck] = useState("")
+
     const handleInput = (e) => {
         setBuyer({
             ...buyer,
@@ -33,11 +34,12 @@ const OrderForm = ({ cart }) => {
 
         setError(false)
 
-        if (buyer.email !== buyer.emailCheck) {
-            setError('El email no coincide')
-        }
-        else if (!buyer.name || !buyer.phone || !buyer.email || !buyer.address) {
+        if (!buyer.name || !buyer.phone || !buyer.email || !buyer.address) {
             setError('Completa los datos')
+        }
+        else if (buyer.email !== emailCheck) {
+            setError('El email no coincide')
+
         } else {
             const newOrder = {
                 buyer,
@@ -76,7 +78,7 @@ const OrderForm = ({ cart }) => {
     return (
         <ListGroup >
             <Form onSubmit={submitHandler}>
-                <ListGroup.Item className="">
+                <ListGroup.Item>
                     <h4 className="text-secondary">({cart.reduce((acc, item) => acc + item.qty, 0)}) PRODUCTOS</h4>
                     {error && (<Alert variant="danger" className="mt-3">{error}</Alert>)}
                     <Form.Group controlId="name">
@@ -104,7 +106,7 @@ const OrderForm = ({ cart }) => {
                         <Form.Label>
                             Confirma tu Email
                                     </Form.Label>
-                        <Form.Control type="email" name="emailCheck" placeholder="Ingresa nuevamente tu correo electrónico" value={buyer.emailCheck} onChange={handleInput} />
+                        <Form.Control type="email" name="emailCheck" placeholder="Ingresa nuevamente tu correo electrónico" value={buyer.emailCheck} onChange={(e) => setEmailCheck(e.target.value)} />
 
                     </Form.Group>
                     <Form.Group controlId="dirección">

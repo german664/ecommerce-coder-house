@@ -2,24 +2,27 @@ import React, { useEffect, useState } from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import { Link, useHistory, useParams } from 'react-router-dom'
 import ItemDetail from './ItemDetail/ItemDetail'
-import { useCartContext } from '../../store/Context/CartContext'
 import ErrorMessage from '../Message/ErrorMessage'
 import Loader from '../Loader/Loader'
+import { getFirestore } from '../../Firebase'
 
 const ItemDetailContainer = () => {
     const history = useHistory()
-    const { itemCollection } = useCartContext()
     const { id } = useParams()
     const [itemDetail, setItemDetail] = useState()
     const [error, setError] = useState(false)
-    const itemCollectionDetail = itemCollection.doc(id)
     const [errorMessage, setErrorMessage] = useState("")
     const [loading, setLoading] = useState(false)
 
     useEffect(() => {
+        const db = getFirestore()
+        const itemCollection = db.collection('items')
+        const itemCollectionDetail = itemCollection.doc(id)
+
         setLoading(true)
         itemCollectionDetail.get().then((doc) => {
             if (!doc.exists) {
+                setLoading(false)
                 setError(true)
                 setErrorMessage("Ups! Parece que el producto que buscas ya no existe")
             } else {
@@ -31,7 +34,7 @@ const ItemDetailContainer = () => {
             setLoading(false)
         })
 
-    }, [id, itemCollectionDetail])
+    }, [id])
 
 
 

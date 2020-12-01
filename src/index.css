@@ -13,8 +13,8 @@ code {
     monospace;
 }
 .loader {
-  border: 10px solid #f3f3f3; /* Light grey */
-  border-top: 10px solid #18bc9c; /* Blue */
+  border: 10px solid #f3f3f3;
+  border-top: 10px solid #18bc9c;
   border-radius: 50%;
   width: 5em;
   height: 5em;
@@ -28,10 +28,4 @@ code {
   100% {
     transform: rotate(360deg);
   }
-}
-a {
-  text-decoration: none;
-}
-a:hover {
-  text-decoration: none;
 }

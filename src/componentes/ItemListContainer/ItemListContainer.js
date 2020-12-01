@@ -1,21 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import { Container } from 'react-bootstrap';
 import ItemList from './ItemList/ItemList';
-import { useCartContext } from '../../store/Context/CartContext';
 import OrderSearch from './OrderSearch';
 import ErrorMessage from '../Message/ErrorMessage';
 import { Link } from 'react-router-dom';
 import Loader from '../Loader/Loader';
+import { getFirestore } from '../../Firebase';
 
 
 const ItemListContainer = ({ title, category }) => {
 
     const [productList, setProductList] = useState([])
-    const { itemCollection } = useCartContext()
+
+
     const [loading, setLoading] = useState(false)
     const [errorMessage, setErrorMessage] = useState("")
 
     useEffect(() => {
+        const db = getFirestore()
+        const itemCollection = db.collection('items')
         if (category) {
 
             const categoryItems = itemCollection.where('category', '==', category)
@@ -47,7 +50,7 @@ const ItemListContainer = ({ title, category }) => {
                 }
             }).catch(error => console.log(error))
         }
-    }, [category, itemCollection])
+    }, [category])
 
     return <>
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import Home from './componentes/Home/home';
-import NavBar from './componentes/NavBar/NavBar';
+import NavigationBar from './componentes/NavBar/NavigationBar';
 import { BrowserRouter, Route, Switch } from "react-router-dom"
 import ItemDetailContainer from './componentes/ItemDetailContainer/ItemDetailContainer';
 import Cart from './componentes/Cart/Cart';
@@ -12,7 +12,7 @@ function App() {
   return (
     <CartContext>
       <BrowserRouter>
-        <NavBar />
+        <NavigationBar />
         <Switch>
           <Route path="/item/:id" component={ItemDetailContainer} />
           <Route path="/category/:category" component={Home} />
