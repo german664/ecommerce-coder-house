@@ -6,8 +6,25 @@ import { useCartContext } from '../../store/Context/CartContext'
 import { useHistory } from 'react-router-dom'
 
 const OrderForm = ({ cart }) => {
+
     const history = useHistory()
     const { clearCart } = useCartContext()
+    const [error, setError] = useState(false)
+
+    const [buyer, setBuyer] = useState({
+        name: "",
+        phone: "",
+        email: "",
+        emailCheck: "",
+        address: ""
+    })
+    const handleInput = (e) => {
+        setBuyer({
+            ...buyer,
+            [e.target.name]: e.target.value
+        })
+    }
+
     const submitHandler = async (e) => {
         e.preventDefault()
 
@@ -15,7 +32,13 @@ const OrderForm = ({ cart }) => {
         const ordersCollection = db.collection('orders')
 
         setError(false)
-        if (buyer.name && buyer.phone && buyer.email) {
+
+        if (buyer.email !== buyer.emailCheck) {
+            setError('El email no coincide')
+        }
+        else if (!buyer.name || !buyer.phone || !buyer.email || !buyer.address) {
+            setError('Completa los datos')
+        } else {
             const newOrder = {
                 buyer,
                 items: cart.map(item => ({ id: item.id, title: item.title, price: item.price, quantity: item.qty, image: item.pictureUrl })),
@@ -36,15 +59,12 @@ const OrderForm = ({ cart }) => {
                     doc.ref.update({ stock: doc.data().stock - item.qty })
                 })
 
-                history.push(`/order/${doc.id}`)
+                history.push(`/order/${doc.id}/success`)
                 clearCart()
 
             } catch (error) {
                 console.log(error)
             }
-
-        } else {
-            setError('Completa los datos')
         }
 
     }
@@ -52,19 +72,7 @@ const OrderForm = ({ cart }) => {
     const formatNumber = (numero) => {
         return new Intl.NumberFormat().format(numero)
     }
-    const [buyer, setBuyer] = useState({
-        name: "",
-        phone: "",
-        email: "",
-        address: ""
-    })
-    const handleInput = (e) => {
-        setBuyer({
-            ...buyer,
-            [e.target.name]: e.target.value
-        })
-    }
-    const [error, setError] = useState(false)
+
     return (
         <ListGroup >
             <Form onSubmit={submitHandler}>
@@ -90,6 +98,13 @@ const OrderForm = ({ cart }) => {
                             Email
                                     </Form.Label>
                         <Form.Control type="email" name="email" placeholder="Ingresa tu correo electrónico" value={buyer.email} onChange={handleInput} />
+
+                    </Form.Group>
+                    <Form.Group controlId="email">
+                        <Form.Label>
+                            Confirma tu Email
+                                    </Form.Label>
+                        <Form.Control type="email" name="emailCheck" placeholder="Ingresa nuevamente tu correo electrónico" value={buyer.emailCheck} onChange={handleInput} />
 
                     </Form.Group>
                     <Form.Group controlId="dirección">

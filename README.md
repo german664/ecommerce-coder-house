@@ -14,9 +14,9 @@ Abrir navegador en [localhost](https://localhost:3000)
 
 ## Convenciones
 
-Para el styling se utilizó la librería React-Bootstrap, por la facilidad que brinda su sistema de grid y algunos de sus componentes ya armados (como el Navbar, el Carousel el Card). De igual manera se usó CSS para darle estilo propio a algunos componentes.
+Para el styling se utilizó la librería React-Bootstrap (https://react-bootstrap.github.io/), por la facilidad que brinda su sistema de grid y algunos de sus componentes ya armados (como el Navbar, el Carousel el Card). De igual manera se usó CSS para darle estilo propio a algunos componentes.
 
-Se descargó un archivo modificado de Bootstrap de la página 'Bootswatch' para que los colores por defecto de Bootstrap no fueran tán genéricos.
+Se descargó un archivo modificado de Bootstrap de la página 'Bootswatch' (https://bootswatch.com/) para que los colores por defecto de Bootstrap no fueran tán genéricos.
 
 ## Features especiales
 

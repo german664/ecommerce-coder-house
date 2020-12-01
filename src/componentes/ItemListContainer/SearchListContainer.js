@@ -4,6 +4,7 @@ import ItemList from './ItemList/ItemList';
 import { useCartContext } from '../../store/Context/CartContext';
 import { useParams } from 'react-router-dom';
 import ErrorMessage from '../Message/ErrorMessage';
+import Loader from '../Loader/Loader';
 
 
 const SearchListContainer = () => {
@@ -40,10 +41,10 @@ const SearchListContainer = () => {
         })
         console.log(search)
 
-    }, [search])
+    }, [search, itemCollection])
 
     return <>
-        {loading ? <div className="d-flex justify-content-center mt-5"> <span class="loader mt-5"></span></div> :
+        {loading ? <Loader /> :
             errorMessage !== "" ? <div className="d-flex justify-content-center mt-5"><ErrorMessage>{errorMessage}</ErrorMessage> </div>
                 :
                 <>

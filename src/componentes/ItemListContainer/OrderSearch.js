@@ -20,7 +20,7 @@ const OrderSearch = () => {
                         <Col md={4} className="border-right">
                             <div className="d-flex flex-column rounded p-2">
                                 <Form onSubmit={handleSubmit} className="text-center">
-                                    <h4 className="text-primary"><i class="fas fa-truck"></i></h4>
+                                    <h4 className="text-primary"><i className="fas fa-truck"></i></h4>
                                     <p >¡Envíos a domicilio!</p>
                                     <strong>Gratis a partir de $20.000</strong>
                                 </Form>
@@ -38,7 +38,7 @@ const OrderSearch = () => {
                         <Col md={4}>
                             <div className="d-flex flex-column rounded p-2 text-center">
                                 <Form onSubmit={handleSubmit}>
-                                    <h4 className="text-primary"><i class="fas fa-phone-alt"></i></h4>
+                                    <h4 className="text-primary"><i className="fas fa-phone-alt"></i></h4>
                                     <p >Atención telefónica</p>
                                     <strong>Escribe o llámanos al +56972994374</strong>
                                 </Form>

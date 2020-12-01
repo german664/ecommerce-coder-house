@@ -1,14 +1,13 @@
-import React, { useState, useContext } from 'react'
+import React, { useState } from 'react'
 import { Button, Col, Image, Row } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { useCartContext } from '../../../store/Context/CartContext'
 import ItemCount from '../../ItemCount/ItemCount'
 import Rating from '../../Rating/Rating'
-import './itemDetail.css'
 
 const ItemDetail = ({ item, setItemDetail }) => {
     const priceStyle = {
-        "font-size": "2.2rem"
+        "fontSize": "2.2rem"
     }
 
 
@@ -37,7 +36,7 @@ const ItemDetail = ({ item, setItemDetail }) => {
             {!!item &&
                 <Row className="justify-content-center">
                     <Col md={5} className="">
-                        <Image src={item.pictureUrl} alt={item.title} fluid className="rounded img-detail border shadow-sm" />
+                        <Image src={item.pictureUrl} alt={item.title} fluid className="rounded border shadow-sm" style={{ "maxHeight": "70vh" }} />
                     </Col>
                     <Col md={6} className="">
                         <div className="card border-0 h-100">

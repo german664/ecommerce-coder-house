@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom'
 import { getFirestore } from '../../../Firebase'
 
 const Banner = () => {
-    const db = getFirestore()
-    const bannersCollection = db.collection('banners')
     const [images, setImages] = useState([])
 
     useEffect(() => {
+        const db = getFirestore()
+        const bannersCollection = db.collection('banners')
         bannersCollection.get().then((querySnapshot) => {
             if (querySnapshot.length === 0) {
                 console.log('No hay datos')
@@ -20,7 +20,7 @@ const Banner = () => {
     return (
         <Carousel pause="hover">
             {images.map(image => (
-                <Carousel.Item>
+                <Carousel.Item key={image.id}>
                     <Link to={image.linkTo}>
                         <img
                             className="d-block w-100"

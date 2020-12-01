@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { useCartContext } from '../../../../store/Context/CartContext'
 import Rating from '../../../Rating/Rating'
 
 const Item = ({ product }) => {
@@ -17,7 +16,7 @@ const Item = ({ product }) => {
                     }
 
                     <Link to={`/item/${product.id}`} >
-                        <img src={product.pictureUrl} className="card-img-top" /></Link>
+                        <img src={product.pictureUrl} alt={product.title} className="card-img-top" /></Link>
                 </div>
                 <div className="px-3">
                     <Link to={`/item/${product.id}`}> <h5 className="my-2 text-body">{product.title}</h5></Link>
